@@ -10,12 +10,21 @@ const Tab = createBottomTabNavigator();
 
 const App = () => {
   const [activeScreen, setActiveScreen] = useState('timer');
+  const [resetPicture, setResetPicture] = useState(false);
+
+  const handleResetPicture = () => {
+    setResetPicture(true);
+  };
 
   return (
     <NavigationContainer>
       <Tab.Navigator tabBar={(props) => <NavBar {...props} activeScreen={activeScreen} setActiveScreen={setActiveScreen} />}>
-        <Tab.Screen name="Timer" component={Timer} />
-        <Tab.Screen name="Prize" component={PictureProcess} />
+        <Tab.Screen name="Timer">
+          {() => <Timer onReset={handleResetPicture} />}
+        </Tab.Screen>
+        <Tab.Screen name="Result">
+          {() => <PictureProcess resetPicture={resetPicture} />}
+        </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );
