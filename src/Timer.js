@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-const Timer = () => {
+const Timer = ({ onReset }) => {
   const [isRunning, setIsRunning] = useState(false);
   const [seconds, setSeconds] = useState(60); // Set initial time to 1 minute
 
@@ -33,6 +33,7 @@ const Timer = () => {
   const handleReset = () => {
     setSeconds(60);
     setIsRunning(false);
+    onReset(); // Call the onReset function passed from the parent component
   };
 
   return (
@@ -97,4 +98,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
 });
+
 export default Timer;
