@@ -28,7 +28,9 @@ const NavBar = ({ state, descriptors, navigation }) => {
             onPress={onPress}
             style={[styles.button, isFocused && styles.activeButton]}
           >
-            <Text style={styles.buttonText}>{label}</Text>
+            <Text style={[styles.buttonText, isFocused && styles.activeButtonText]}>
+              {label}
+            </Text>
           </TouchableOpacity>
         );
       })}
@@ -49,13 +51,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 10,
-    backgroundColor: 'white',
+    backgroundColor: 'lightblue',
   },
   activeButton: {
-    backgroundColor: 'lightblue',
+    backgroundColor: 'yellow',
   },
   buttonText: {
     fontSize: 16,
+    color: 'black',
+  },
+  activeButtonText: {
+    color: 'red',
   },
 });
 
