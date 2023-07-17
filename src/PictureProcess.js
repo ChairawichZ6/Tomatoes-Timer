@@ -3,12 +3,9 @@ import { View, Image, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 const imageSources = [
   require('../Img/zeed.jpg'),
-  require('../Img/rare.jpg'),
-  require('../Img/T1.jpg'),
-  require('../Img/T2.jpg'),
-  require('../Img/T3.jpg'),
-  require('../Img/T4.jpg'),
-  require('../Img/T5.jpg'),
+  require('../Img/sas.gif'),
+  require('../Img/salt.gif'),
+  require('../Img/raredrop.gif'),
 ];
 
 const PictureProcess = ({ onReset }) => {
