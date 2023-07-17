@@ -5,8 +5,23 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Timer from './src/Timer';
 import PictureProcess from './src/PictureProcess';
 import NavBar from './src/NavBar';
+import AppBar from './src/AppBar';
 
 const Tab = createBottomTabNavigator();
+
+const TimerScreen = ({ onReset }) => (
+  <View style={{ flex: 1 }}>
+    <AppBar onReset={onReset} />
+    <Timer onReset={onReset} />
+  </View>
+);
+
+const ResultScreen = ({ onReset }) => (
+  <View style={{ flex: 1 }}>
+    <AppBar onReset={onReset} />
+    <PictureProcess onReset={onReset} />
+  </View>
+);
 
 const App = () => {
   const [activeScreen, setActiveScreen] = useState('timer');
@@ -20,10 +35,10 @@ const App = () => {
     <NavigationContainer>
       <Tab.Navigator tabBar={(props) => <NavBar {...props} activeScreen={activeScreen} setActiveScreen={setActiveScreen} />}>
         <Tab.Screen name="Timer">
-          {() => <Timer onReset={handleResetPicture} />}
+          {() => <TimerScreen onReset={handleResetPicture} />}
         </Tab.Screen>
         <Tab.Screen name="Result">
-          {() => <PictureProcess resetPicture={resetPicture} />}
+          {() => <ResultScreen onReset={handleResetPicture} />}
         </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
