@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Modal, TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native'; // Import the useNavigation hook
 
 const AppBar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const navigation = useNavigation(); // Initialize the useNavigation hook
 
   const handleMenuToggle = () => {
     setShowMenu(!showMenu);
@@ -11,6 +13,12 @@ const AppBar = () => {
 
   const handleMenuClose = () => {
     setShowMenu(false);
+  };
+
+  // Add a function to navigate to the "Task" page
+  const handleNavigateToTask = () => {
+    navigation.navigate('Task');
+    handleMenuClose();
   };
 
   return (
@@ -31,12 +39,9 @@ const AppBar = () => {
             <View style={styles.menuItemsContainer}>
               <TouchableHighlight
                 underlayColor="#FFFF00" // Set the highlight color to yellow
-                onPress={() => {
-                  console.log('Profile clicked');
-                  handleMenuClose();
-                }}
+                onPress={handleNavigateToTask} // Use the handleNavigateToTask function here
               >
-                <Text style={styles.menuItem}>Profile</Text>
+                <Text style={styles.menuItem}>Task</Text>
               </TouchableHighlight>
 
               <TouchableHighlight
